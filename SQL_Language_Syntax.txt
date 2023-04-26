@@ -1,0 +1,40 @@
+	SQL -----------> STRUCTURED QUERY LANGUAGE
+SQL DA RAQAMLAR TURLARI => INT, FLOAT, REAL, MODEY, BIGINT, SMALLMONEY, 
+
+1)CREATE DATABASE dataBaseName; => Create new database
+2)  \l => is List of Database
+3)  \c dataBaseName; => Connect to "dataBaseName"
+4) DROP DATABASE dataBaseName; => remove to DataBase
+---------------------------------------------------------
+JADVAL YARATISH CREATE TABLE jadvalNomi(
+	USTUN_NOMI MALUMOT_TURI ATRIBUTI
+);
+5) CREATE TABLE tableName(  -----------------> bu orqali database ichida jadval yaratiladi.
+	id BIGSERIAL NOT NULL PRIMARY KEY, ------> bu id ustuni
+	name varchar(50) NOT NULL, --> bu name nomli ustun
+	birthday DATE NOT NULL,
+	
+);
+
+
+CREATE TABLE Customers
+(
+    Id INT PRIMARY KEY IDENTITY,
+    Age INT DEFAULT 18 CHECK(Age >0 AND Age < 100), -------> check kalit so'zi kiritilgan qiymatni tekshiradi masalan kiritilgan yosh qiymati 1 dan kichik hamda 100 dan katta bo'lmasligi lozim.
+    FirstName NVARCHAR(20) NOT NULL,
+    LastName NVARCHAR(20) NOT NULL,
+    Email VARCHAR(30) UNIQUE CHECK(Email !=''), ----emailni tekshirilyapti. Yani email bo'sh string bo'lmasligi lozim.
+    Phone VARCHAR(20) UNIQUE CHECK(Phone !='') -----telefon raqamini tekshirilyapti. Yani email bo'sh string bo'lmasligi lozim.
+);
+
+CREATE TABLE Customers
+(
+    Id INT CONSTRAINT PK_Customer_Id PRIMARY KEY IDENTITY,
+    Age INT
+        CONSTRAINT DF_Customer_Age DEFAULT 18 
+        CONSTRAINT CK_Customer_Age CHECK(Age >0 AND Age < 100),
+    FirstName NVARCHAR(20) NOT NULL,
+    LastName NVARCHAR(20) NOT NULL,
+    Email VARCHAR(30) CONSTRAINT UQ_Customer_Email UNIQUE, ---> unique kalit so'zi kiritilgan malumotlarni takrorlanmas ko'rinishda bo'lishini taminlaydi.
+    Phone VARCHAR(20) CONSTRAINT UQ_Customer_Phone UNIQUE
+)
