@@ -12,9 +12,9 @@ JADVAL YARATISH CREATE TABLE jadvalNomi(
 5) CREATE TABLE tableName(  -----------------> bu orqali database ichida jadval yaratiladi.
 	id BIGSERIAL NOT NULL PRIMARY KEY, ------> bu id ustuni
 	name varchar(50) NOT NULL, --> bu name nomli ustun
-	birthday DATE NOT NULL,
-	
+	birthday DATE NOT NULL,	
 );
+----------------------------------------------------------
 
 
 CREATE TABLE Customers
@@ -26,7 +26,7 @@ CREATE TABLE Customers
     Email VARCHAR(30) UNIQUE CHECK(Email !=''), ----emailni tekshirilyapti. Yani email bo'sh string bo'lmasligi lozim.
     Phone VARCHAR(20) UNIQUE CHECK(Phone !='') -----telefon raqamini tekshirilyapti. Yani email bo'sh string bo'lmasligi lozim.
 );
-
+-------------------------------------------------------------
 CREATE TABLE Customers
 (
     Id INT CONSTRAINT PK_Customer_Id PRIMARY KEY IDENTITY,
@@ -38,3 +38,20 @@ CREATE TABLE Customers
     Email VARCHAR(30) CONSTRAINT UQ_Customer_Email UNIQUE, ---> unique kalit so'zi kiritilgan malumotlarni takrorlanmas ko'rinishda bo'lishini taminlaydi.
     Phone VARCHAR(20) CONSTRAINT UQ_Customer_Phone UNIQUE
 )
+
+---------------------------------------------------------------------
+CREATE TABLE Customers
+(
+    Id INT IDENTITY,
+    Age INT CONSTRAINT DF_Customer_Age DEFAULT 18, ----------------------constraint kalit so'zi cheklovla berish uchun ishlatiladi. Masalan bu yerda Age ustuni qiymati boshlang'ich 18 deb belgailangan.
+    FirstName NVARCHAR(20) NOT NULL,
+    LastName NVARCHAR(20) NOT NULL,
+    Email VARCHAR(30),
+    Phone VARCHAR(20),
+    CONSTRAINT PK_Customer_Id PRIMARY KEY (Id), 
+    CONSTRAINT CK_Customer_Age CHECK(Age >0 AND Age < 100),
+    CONSTRAINT UQ_Customer_Email UNIQUE (Email),
+    CONSTRAINT UQ_Customer_Phone UNIQUE (Phone)
+)
+------------------------------------------------------------------------
+SELECT * FROM users ORDER BY ID DESC => users jadvalidan barcha malumotlarni id raqami bo'yicha teskari tartibda joylashtirib beradi
