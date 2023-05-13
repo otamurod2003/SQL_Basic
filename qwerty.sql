@@ -4,7 +4,7 @@ CREATE TABLE Users (
 	userName  NVARCHAR(50) NOT NULL ,
 	userAdress NVARCHAR(100) NOT NULL,
 	birthDay DATE NOT NULL,
-	email NVARCHAR(60) NOT NULL UNIQUE,
+	email NVARCHAR(60) NOT NULL UNIQUE CHECK(email != ''),
 	);
 INSERT INTO Users(
 userName,
