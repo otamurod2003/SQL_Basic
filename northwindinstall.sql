@@ -1,23 +1,4 @@
-﻿USE [master]
-GO
-
-/****** Object:  Database [Northwind]    Script Date: 14.07.2023 9:07:31 ******/
-CREATE DATABASE [Northwind]
- CONTAINMENT = NONE
- ON  PRIMARY 
-( NAME = N'Northwind', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\Northwind.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
- LOG ON 
-( NAME = N'Northwind_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\Northwind_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
- WITH CATALOG_COLLATION = DATABASE_DEFAULT
-GO
-
-IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
-begin
-EXEC [Northwind].[dbo].[sp_fulltext_database] @action = 'enable'
-end
-GO
-
-/*
+﻿/*
 ** Copyright Microsoft, Inc. 1994 - 2000
 ** All Rights Reserved.
 */
